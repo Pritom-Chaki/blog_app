@@ -6,12 +6,42 @@ class LoginRegisterPage extends StatefulWidget {
   }
 }
 
+enum FormType { login, register }
+
 class _LoginRegisterState extends State<LoginRegisterPage> {
+  final formKey = new GlobalKey<FormState>();
+  FormType _formType = FormType.login;
+  String _email = "";
+  String _password = "";
+
   //Method Part
 
-  void validateAndSave() {}
+  bool validateAndSave() {
+    final form = formKey.currentState;
 
-  void moveToRegister() {}
+    if (form.validate()) {
+      form.save();
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  void moveToRegister() {
+    formKey.currentState.reset();
+
+    setState(() {
+      _formType = FormType.register;
+    });
+  }
+
+  void moveToLogin() {
+    formKey.currentState.reset();
+
+    setState(() {
+      _formType = FormType.login;
+    });
+  }
 
   //Design Part
   @override
@@ -22,10 +52,13 @@ class _LoginRegisterState extends State<LoginRegisterPage> {
       ),
       body: new Container(
         margin: EdgeInsets.all(15.0),
-        child: new Form(
-          child: new Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: createInputs() + createButtons(),
+        child: SingleChildScrollView(
+          child: new Form(
+            key: formKey,
+            child: new Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: createInputs() + createButtons(),
+            ),
           ),
         ),
       ),
@@ -42,14 +75,25 @@ class _LoginRegisterState extends State<LoginRegisterPage> {
         height: 20.0,
       ),
       new TextFormField(
-        decoration: new InputDecoration(labelText: 'Email'),
-      ),
+          decoration: new InputDecoration(labelText: 'Email'),
+          validator: (value) {
+            return value.isEmpty ? 'Email is required' : null;
+          },
+          onSaved: (value) {
+            return _email = value;
+          }),
       SizedBox(
         height: 10.0,
       ),
       new TextFormField(
-        decoration: new InputDecoration(labelText: 'Password'),
-      ),
+          decoration: new InputDecoration(labelText: 'Password'),
+          obscureText: true,
+          validator: (value) {
+            return value.isEmpty ? 'Password is required' : null;
+          },
+          onSaved: (value) {
+            return _password = value;
+          }),
       SizedBox(
         height: 10.0,
       ),
@@ -68,19 +112,37 @@ class _LoginRegisterState extends State<LoginRegisterPage> {
   }
 
   List<Widget> createButtons() {
-    return [
-      new RaisedButton(
-        child: new Text("Login", style: new TextStyle(fontSize: 20.0)),
-        textColor: Colors.white,
-        color: Colors.yellow,
-        onPressed: validateAndSave,
-      ),
-      new FlatButton(
-        child: new Text("Not have an account? Create one",
-            style: new TextStyle(fontSize: 14.0)),
-        textColor: Colors.blue,
-        onPressed: moveToRegister,
-      ),
-    ];
+    if (_formType == FormType.login) {
+      return [
+        new RaisedButton(
+          child: new Text("Login", style: new TextStyle(fontSize: 20.0)),
+          textColor: Colors.white,
+          color: Colors.pink,
+          onPressed: validateAndSave,
+        ),
+        new FlatButton(
+          child: new Text("Not have an account? Create one",
+              style: new TextStyle(fontSize: 14.0)),
+          textColor: Colors.blue,
+          onPressed: moveToRegister,
+        ),
+      ];
+    } else {
+      return [
+        new RaisedButton(
+          child:
+              new Text("Create Account", style: new TextStyle(fontSize: 20.0)),
+          textColor: Colors.white,
+          color: Colors.pink,
+          onPressed: validateAndSave,
+        ),
+        new FlatButton(
+          child: new Text("Already have an account? Login",
+              style: new TextStyle(fontSize: 14.0)),
+          textColor: Colors.blue,
+          onPressed: moveToLogin,
+        ),
+      ];
+    }
   }
 }
