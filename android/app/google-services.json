@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "137469133012",
+    "firebase_url": "https://pcblogapp.firebaseio.com",
+    "project_id": "pcblogapp",
+    "storage_bucket": "pcblogapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:137469133012:android:50ba92c50cea1e06ef3b41",
+        "android_client_info": {
+          "package_name": "com.example.blog_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "137469133012-lr5qltt11k0gavjb6cr1nal3jrdadsvf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeHe0yX6uTmUIhf8KhkMImCo1ZD_RqWFQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "137469133012-lr5qltt11k0gavjb6cr1nal3jrdadsvf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
