@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Authentication.dart';
+import 'NavDrawer.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -41,6 +42,7 @@ class _HomePageState extends State<HomePage> {
       appBar: new AppBar(
         title: new Text("Home"),
       ),
+      drawer: NavDrawer(),
       body: new Container(),
       bottomNavigationBar: new BottomAppBar(
           color: Colors.indigo,
