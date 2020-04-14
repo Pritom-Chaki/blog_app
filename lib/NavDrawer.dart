@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'HomePage.dart';
-import 'Authentication.dart';
 
-class NavDrawer extends StatelessWidget {
+
+class NavDrawer extends StatefulWidget {
   //Method
+  @override
+  _NavDrawerState createState() => _NavDrawerState();
+}
+
+class _NavDrawerState extends State<NavDrawer> {
   HomePage homePageOBJ = new HomePage();
-  
-  //Design
+
   @override
   Widget build(BuildContext context) {
     return  Drawer(

@@ -51,12 +51,12 @@ DialogBox dialogBox = new DialogBox();
         if(_formType == FormType.login)
         {
           String userId = await widget.auth.signIn(_email, _password);
-         dialogBox.information(context, "Congratulations", "You logged in succesfully!");
+        // dialogBox.information(context, "Congratulations", "You logged in succesfully!");
           print("Login userId = $userId");
         }
         else{
           String userId = await widget.auth.signUp(_email, _password);
-          dialogBox.information(context, "Congratulations", "Your account has been created succesfully!");
+         // dialogBox.information(context, "Congratulations", "Your account has been created succesfully!");
           print("Register userId = $userId");
         }
         widget.onSignedIn();
