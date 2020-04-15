@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'Authentication.dart';
-import 'DialogBox.dart';
+import 'package:blog_app/Services/Authentication.dart';
+import 'package:blog_app/Shared/DialogBox.dart';
+import 'package:blog_app/Shared/loading.dart';
+
+
 class LoginRegisterPage extends StatefulWidget {
 
 LoginRegisterPage({
@@ -29,6 +32,7 @@ DialogBox dialogBox = new DialogBox();
   FormType _formType = FormType.login;
   String _email = "";
   String _password = "";
+  bool loading = false;
 
   //Method Part
 
@@ -47,17 +51,20 @@ DialogBox dialogBox = new DialogBox();
   {
     if(validateAndSave())
     {
+      loading = true;
       try{
         if(_formType == FormType.login)
         {
           String userId = await widget.auth.signIn(_email, _password);
         // dialogBox.information(context, "Congratulations", "You logged in succesfully!");
           print("Login userId = $userId");
+          loading = false;
         }
         else{
           String userId = await widget.auth.signUp(_email, _password);
          // dialogBox.information(context, "Congratulations", "Your account has been created succesfully!");
           print("Register userId = $userId");
+          loading = false;
         }
         widget.onSignedIn();
       }
@@ -89,7 +96,7 @@ DialogBox dialogBox = new DialogBox();
   //Design Part
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return loading ? Loading() : Scaffold(
       appBar: new AppBar(
         title: new Text("Flutter Blog App"),
       ),

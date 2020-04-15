@@ -1,4 +1,4 @@
-import 'package:blog_app/HomePage.dart';
+import 'package:blog_app/UI/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -117,7 +117,7 @@ class _UploadPhotoPageState extends State<UploadPhotoPage> {
               elevation: 10.0,
               child: Text("Add a New Post"),
               textColor: Colors.white,
-              color: Colors.yellow,
+              color: Colors.indigo,
               onPressed: uploadStatusImage,
             )
           ],

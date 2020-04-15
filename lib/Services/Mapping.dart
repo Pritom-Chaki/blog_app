@@ -1,6 +1,6 @@
  import 'package:flutter/material.dart';
-import 'LoginRegisterPage.dart';
-import 'HomePage.dart';
+import 'package:blog_app/UI/LoginRegisterPage.dart';
+import 'package:blog_app/UI/HomePage.dart';
 import 'Authentication.dart';
 
 class MappingPage extends StatefulWidget

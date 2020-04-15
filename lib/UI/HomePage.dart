@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'Authentication.dart';
+import 'package:blog_app/Services/Authentication.dart';
 import 'NavDrawer.dart';
 import 'PhotoUpload.dart';
-import 'Posts.dart';
+import 'package:blog_app/Model/Posts.dart';
 import 'package:firebase_database/firebase_database.dart';
+
 
 class HomePage extends StatefulWidget {
   HomePage({
@@ -21,6 +22,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  
+
   //Method Part
 
   List<Posts> postsList = [];
